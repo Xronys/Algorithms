@@ -14,9 +14,9 @@ public class SolutionB {
         int n = Integer.parseInt(str[0]);
         int i = Integer.parseInt(str[1]);
         int j = Integer.parseInt(str[2]);
-        int result = 0;
-        int forward = 0;
-        int backward = 0;
+        int result;
+        int forward;
+        int backward;
 
         forward = Math.abs(i - j) - 1;
         if(i < j)
