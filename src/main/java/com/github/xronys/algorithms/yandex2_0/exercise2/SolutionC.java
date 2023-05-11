@@ -3,21 +3,15 @@ package com.github.xronys.algorithms.yandex2_0.exercise2;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class SolutionA {
+public class SolutionC {
     public static void main( String[] args ) throws Exception{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int result = 0;
-        int temp;
-        int max = Integer.MIN_VALUE;
-        while( (temp = Integer.parseInt(reader.readLine())) != 0) {
-            if(temp > max) {
-                max = temp;
-                result = 1;
+        char[] chars = reader.readLine().toCharArray();
+            for (int i = 0; i < chars.length / 2; i++) {
+                if (chars[i] != chars[chars.length - 1 - i])
+                    result++;
             }
-            else if(temp == max) {
-                result ++;
-            }
-        }
 
         System.out.println(result);
 
