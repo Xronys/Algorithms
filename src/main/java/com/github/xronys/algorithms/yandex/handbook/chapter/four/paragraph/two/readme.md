@@ -5,5 +5,3 @@
 ![](media/SolutionC_2.PNG)
 ![](media/SolutionD_1.PNG)
 ![](media/SolutionD_2.PNG)
-![](media/SolutionE_1.PNG)
-![](media/SolutionE_2.PNG)

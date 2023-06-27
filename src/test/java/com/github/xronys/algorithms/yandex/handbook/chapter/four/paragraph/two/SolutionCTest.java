@@ -11,17 +11,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @RunWith(DataProviderRunner.class)
-public class SolutionBTest {
+public class SolutionCTest {
     @DataProvider
     public static Object[][] data() {
         return new Object[][]{
-                {3,"1 2 3 4",2, "1 0 0", Arrays.asList(1, 3, 3, 4)}
+                {"abc", "def", "adbecf"},
+                {"abaca", "bdaef", "abbdaaceaf"},
+                {"y", "z", "yz"},
         };
     }
 
     @Test
     @UseDataProvider("data")
-    public void solveTest(int polynomialASize, String[] polynomialA, int polynomialBSize, String[] polynomialB, ArrayList<Integer> result){
-        Assert.assertEquals(result, SolutionB.solve(polynomialASize, polynomialA, polynomialBSize, polynomialB));
+    public void solveTest(String str1, String str2, String result){
+        Assert.assertEquals(result, SolutionC.solve(str1,str2));
     }
 }
