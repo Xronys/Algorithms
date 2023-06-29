@@ -8,7 +8,7 @@ public class SolutionA {
         return a + b;
     }
 
-    public static void main( String args[] ) throws IOException {
+    public static void main( String[] args ) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out))) {
             String[] s = reader.readLine().split(" ");
