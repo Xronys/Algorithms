@@ -7,22 +7,20 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-
-
 @RunWith(DataProviderRunner.class)
-public class SolutionBTest {
+public class SolutionCTest {
     @DataProvider
     public static Object[][] data() {
         return new Object[][]{
-                {3, 2},
-                {139, 1},
-                {91239, 6}
+                {1, 239, 1},
+                {115, 1000, 885},
+                {2816213588L, 239, 151}
         };
     }
 
     @Test
     @UseDataProvider("data")
-    public void solveTest(int n, long result){
-        Assert.assertEquals(result, SolutionB.solve(n));
+    public void solveTest(long n, int m, long result){
+        Assert.assertEquals(result, SolutionC.solve(n,m));
     }
 }
