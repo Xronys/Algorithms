@@ -1,8 +1,5 @@
 package com.github.xronys.algorithms.yandex.handbook.chapter.nine.paragraph.one;
 
-
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

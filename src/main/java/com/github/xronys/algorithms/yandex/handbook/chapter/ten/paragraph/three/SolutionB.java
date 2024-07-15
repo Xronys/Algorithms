@@ -1,79 +1,76 @@
 package com.github.xronys.algorithms.yandex.handbook.chapter.ten.paragraph.three;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import java.util.*;
 
 public class SolutionB {
-    public static long solve( List<Integer> billboards, List<Advertising> advertising, int w) {
-        Collections.sort(advertising);
-        long result = 0;
-
-        while(!billboards.isEmpty() && !advertising.isEmpty()) {
-            int billboard = billboards.get(0);
-            Advertising adv = advertising.get(0);
-            if(billboard >= adv.placementTime) {
-                billboard = billboard - adv.placementTime;
-                result += adv.placementTime * adv.price;
-                advertising.remove(0);
-            }
-            else {
-                result += billboard * adv.price;
-                adv.placementTime -= billboard;
-                billboard = 0;
-            }
-                if (billboard == 0) {
-                    billboards.remove(0);
-                } else {
-                    billboards.set(0, billboard);
-                }
+    public static int result = 1;
+    public static Set<Integer> set = new HashSet<>();
+    public static Queue<Integer> queue = new LinkedList<>();
+    public static int count = 1;
+    public static int solve( int x, int y) {
+        if(x == y ) {
+            return 0;
         }
+            for ( int i = 0; i < 10; i++ ) {
+                int plus = x + i;
+                int minus = x - i;
+                int multiply = x * i;
+                if(plus == y || minus == y || multiply == y) {
+                    break;
+                }
+               check(plus, minus, multiply);
+                while(!queue.isEmpty()) {
+                    if(count == 0) {
+                        result ++;
+                        count = queue.size();
+                    }
+                    int current = queue.poll();
+                    count--;
+                    for(int j = 0; j < 10; j++ ) {
+                        plus = current + j;
+                        minus = current - j;
+                        multiply = current * j;
+                        if(plus == y || minus == y || multiply == y) {
+                            return result;
+                        }
+                        check(plus, minus, multiply);
+                    }
 
+
+
+                }
+                if( i == 9) {
+                    result++;
+                }
+
+        }
         return result;
     }
-
-
-
-    public static class Advertising implements Comparable<Advertising> {
-        int price;
-        int placementTime;
-
-        public Advertising( int price, int placementTime ) {
-            this.price = price;
-            this.placementTime = placementTime;
+    public static void check(int plus, int minus, int multiply){
+        if(!set.contains(plus)) {
+            set.add(plus);
+            queue.add(plus);
         }
-
-        // descending order
-        @Override
-        public int compareTo( Advertising o ) {
-            return  o.price - this.price;
+        if(!set.contains(minus)) {
+            set.add(minus);
+            queue.add(minus);
+        }
+        if(!set.contains(multiply)) {
+            set.add(multiply);
+            queue.add(multiply);
         }
     }
+
+
 
     public static void main(String[] args ) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out))) {
             String str1[] = reader.readLine().split(" ");
-            int n = Integer.parseInt(str1[0]);
-            int k = Integer.parseInt(str1[1]);
-            int w = Integer.parseInt(str1[2]);
-            List<Integer> billboards = new ArrayList<>();
-            List<Advertising> advertising = new ArrayList<>();
-            for(int i = 0; i < n; i++) {
-            billboards.add(w);
-            }
-            for(int i = 0; i < k; i++) {
-                String str[] = reader.readLine().split(" ");
-                int price = Integer.parseInt(str[0]);
-                int placementTime = Integer.parseInt(str[1]);
-                if (placementTime > w) {
-                    placementTime = w;
-                }
-                advertising.add(new Advertising(price,placementTime));
-            }
-            writer.write(String.valueOf(solve(billboards, advertising, w)));
+            int x = Integer.parseInt(str1[0]);
+            int y = Integer.parseInt(str1[1]);
+            writer.write(String.valueOf(solve(x,y)));
         }
     }
 }

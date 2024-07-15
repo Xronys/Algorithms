@@ -1,6 +1,3 @@
 ![](media/SolutionA_1.PNG)
 ![](media/SolutionA_2.PNG)
-![](media/SolutionA_3.PNG)
-![](media/SolutionB_1.PNG)
-![](media/SolutionB_2.PNG)
-![](media/SolutionB_3.PNG)
+![](media/SolutionB.PNG)
